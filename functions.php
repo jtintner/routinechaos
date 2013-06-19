@@ -43,17 +43,3 @@ genesis_register_sidebar( array(
 'name' => __( 'Home Columns', 'wpsites' ),
 'description' =>  __( 'Adds Home Page Widget For 3 Columns', 'wpsites' ),
 ) );
-/**
-* @author Brad Dalton - WP Sites
-* @learn more http://wp.me/p1lTu0-a0y
-*/
-add_action( 'genesis_before_content_sidebar_wrap', 'wpsites_home_widget', 5 );
-function wpsites_home_widget() {
-if ( is_home() && is_active_sidebar( 'custom-widget' ) ) {
-    echo '<div class="custom-widget">';
-	dynamic_sidebar( 'custom-widget' );
-	echo '</div><!-- end .custom-widget -->';
- 
-  }
-	
-}
