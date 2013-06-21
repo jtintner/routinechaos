@@ -18,7 +18,44 @@
  *
  */
 
+  // Add Nav to Header
+	add_action('genesis_before', 'be_nav_menus','genesis_header' ,'genesis_after_header' );
 
+/**
+ * Add Nav Menus to Header
+ *
+ */
+
+function be_nav_menus() {
+	echo '<div class="menuWrap"><div class="menus"><div class="menu-primary">';
+	wp_nav_menu( array( 'menu' => 'Primary' ) );
+	echo '</div><!-- .primary --></div><!--.menus --></div><!--.menuWrap-->';
+}
+
+
+// Start the engine
+require_once( get_template_directory() . '/lib/init.php' );
+
+// Child theme (do not remove)
+define( 'CHILD_THEME_NAME', 'BlueEel' );
+
+// Add Viewport meta tag for mobile browsers
+add_action( 'genesis_meta', 'sample_viewport_meta_tag' );
+function sample_viewport_meta_tag() {
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>';
+}
+
+// Add support for custom background
+add_theme_support( 'custom-background' );
+
+// Add support for custom header
+add_theme_support( 'genesis-custom-header', array(
+	'width' => 1152,
+	'height' => 120
+) );
+
+// Add support for 3-column footer widgets
+add_theme_support( 'genesis-footer-widgets', 3 );
 
 genesis_register_sidebar( array(
 'id' => 'custom-widget',
@@ -37,5 +74,6 @@ if ( is_home() && is_active_sidebar( 'custom-widget' ) ) {
 	echo '</div><!-- end .custom-widget -->';
  
   }
-	
+
 }
+
